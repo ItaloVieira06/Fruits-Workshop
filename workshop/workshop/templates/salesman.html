@@ -1,0 +1,144 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+	<title>Vendedor</title>                                      
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+<!--===============================================================================================-->		
+	<link rel="stylesheet" href="{% static 'css/main.css' %}">
+    <link rel="stylesheet" href="{% static 'css/util.css' %}">
+<!--===============================================================================================-->	
+	<link rel="icon" type="image/png" href="{% static 'images/icons/favicon.ico' %}"/> 
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{% static 'vendor/bootstrap/css/bootstrap.min.css' %}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{% static 'fonts/font-awesome-4.7.0/css/font-awesome.min.css' %}"> 
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{% static 'fonts/iconic/css/material-design-iconic-font.min.css' %}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{% static 'vendor/animate/animate.css' %}"> 
+<!--===============================================================================================-->	
+	<link rel="stylesheet" type="text/css" href="{% static 'vendor/css-hamburgers/hamburgers.min.css' %}"> 
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{% static 'vendor/animsition/css/animsition.min.css' %}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{% static 'vendor/select2/select2.min.css' %}">
+<!--===============================================================================================-->	
+	<link rel="stylesheet" type="text/css" href="{% static 'vendor/daterangepicker/daterangepicker.css' %}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{% static 'css/util.css' %}">
+	<link rel="stylesheet" type="text/css" href="{% static 'css/main.css' %}">
+<!--===============================================================================================-->
+</head> 
+<body>
+	{% if error %}
+	<script>
+	  alert("{{ error }}")
+	</script>
+
+   {% endif %}
+	<div class="limiter">
+		<div class="container-login100" style="background-image: url('{% static 'images/bg-01.jpg' %}');">
+			<div class="wrap-login100">
+				<form class="login100-form validate-form" method="post" action="{% url 'search' %}">
+					{% csrf_token %}
+					<span class="login100-form-logo">
+						<i class="zmdi zmdi-landscape"></i>
+					</span>
+
+					<span class="login100-form-title p-b-34 p-t-27">
+						Área do Vendedor
+					</span>
+
+					<br>
+
+					<div class="container-login100-form-btn">
+                        <a href="{% url 'sales' %}" class="login100-form-btn">
+							Vender
+						</a>
+
+						<a href="{% url 'report' %}" class="login100-form-btn">
+							Ver Relatório
+						</a>
+
+						<a href="{% url 'login' %}" class="login100-form-btn">
+							Deslogar
+						</a>
+					</div>
+
+					<br>
+
+					<div id="divBusca" class="container-login100-form-btn">
+						<select name="fruit_type" id="fruit_type" required>
+							<option value="" >-------------</option>
+							<option value="name">Nome do Produto</option>
+							<option value="clas">Classificação do Produto</option>
+							<option value="fresh">Produto Fresco</option>
+							<option value="quant">Quantidade do Produto</option>
+							<option value="value">Valor do Produto</option>
+					    </select>
+
+						<input type="text" name="txt_fruit" id="txt_fruit" placeholder="Digite o Valor de acordo com o padrão abaixo: " required/>
+
+
+						<button class="login100-form-btn">
+							Buscar
+						</button>
+					</div>
+
+					<br>
+
+					<div class="container-login100-form-btn">
+						<table width="100%" border="1px" bgcolor="#CCC">
+							<thead bgcolor="#666666">
+								<tr>
+									<th scope="col" >Nome do Produto</th>
+									<th scope="col">Classificação do Produto</th>
+									<th scope="col">Produto Fresco</th>
+									<th scope="col">Quantidade do Produto</th>
+									<th scope="col">Valor do Produto</th>
+								</tr>
+							</thead>
+							<tbody>
+								{% for fruits in fruits %}
+								 <tr>
+									<th scope="row" value="{{fruits.name}}">{{fruits.name}}</th>
+									<td value="{{fruits.clas}}">{{fruits.clas}}</td>
+									<td value="{{fruits.fresh}}">{{fruits.fresh}}</td>
+									<td value="{{fruits.quant}}">{{fruits.quant}}</td>
+									<td value="{{fruits.value}}">{{fruits.value}}</td>
+								 </tr>
+								{% endfor %}
+							</tbody>
+						</table>
+					</div>
+
+				</form>
+			</div>
+		</div>
+	</div>
+	
+
+	<div id="dropDownSelect1"></div>
+	
+<!--===============================================================================================-->
+	<script src="{% static 'vendor/jquery/jquery-3.2.1.min.js' %}"></script>
+<!--===============================================================================================-->
+	<script src="{% static 'vendor/animsition/js/animsition.min.js' %}"></script>
+<!--===============================================================================================-->
+	<script src="{% static 'vendor/bootstrap/js/popper.js' %}"></script>
+	<script src="{% static 'vendor/bootstrap/js/bootstrap.min.js' %}"></script>
+<!--===============================================================================================-->
+	<script src="{% static 'vendor/select2/select2.min.js' %}"></script>
+<!--===============================================================================================-->
+	<script src="{% static 'vendor/daterangepicker/moment.min.js' %}"></script>
+	<script src="{% static 'vendor/daterangepicker/daterangepicker.js' %}"></script>
+<!--===============================================================================================-->
+	<script src="{% static 'vendor/countdowntime/countdowntime.js' %}"></script>
+<!--===============================================================================================-->
+
+
+</body>
+</html>
